@@ -1,5 +1,5 @@
 import unittest
-from statistics_service import StatisticsService
+from statistics_service import StatisticsService, SortBy
 from player import Player
 
 class PlayerReaderStub:
@@ -40,12 +40,12 @@ class TestStatisticsService(unittest.TestCase):
         self.assertEqual(names, ["Semenko", "Kurri", "Gretzky"])
 
     def test_top_scorers_fetches_right_amount(self):
-        players = self.stats.top(3)
+        players = self.stats.top(3, SortBy.POINTS)
 
         self.assertEqual(len(players), 3)
 
     def test_top_scorers_fethces_right_players(self):
-        players = self.stats.top(3)
+        players = self.stats.top(3,SortBy.POINTS)
 
         names = []
         for player in players:
@@ -53,4 +53,23 @@ class TestStatisticsService(unittest.TestCase):
 
         self.assertEqual(names, ["Gretzky", "Lemieux", "Yzerman"])
 
+    def test_top_assisters_works(self):
+        players = self.stats.top(3,SortBy.ASSISTS)
+        self.assertEqual(len(players), 3)
+
+        names = []
+        for player in players:
+            names.append(player.name)
+
+        self.assertEqual(names, ["Gretzky", "Yzerman", "Lemieux"])
+
+    def test_top_goals_works(self):
+        players = self.stats.top(3,SortBy.GOALS)
+        self.assertEqual(len(players), 3)
+
+        names = []
+        for player in players:
+            names.append(player.name)
+
+        self.assertEqual(names, ["Lemieux", "Yzerman", "Kurri"])
         
