@@ -25,18 +25,18 @@ class Erotus:
         self.sovelluslogiikka.miinus(self.syote)
 
 class Nollaus:
-    def __init__(self, sovelluslogiikka, syote):
+    def __init__(self, sovelluslogiikka):
         self.sovelluslogiikka = sovelluslogiikka
 
     def suorita(self):
         self.sovelluslogiikka.nollaa()
 
 class Kumoa:
-    def __init__(self, sovelluslogiikka, syote):
+    def __init__(self, sovelluslogiikka):
         self.sovelluslogiikka = sovelluslogiikka
 
     def suorita(self):
-        pass
+        self.sovelluslogiikka.kumoa()
     
 
 
@@ -100,8 +100,8 @@ class Kayttoliittyma:
         self._komennot = {
             Komento.SUMMA: Summa(self._sovelluslogiikka, syote),
             Komento.EROTUS: Erotus(self._sovelluslogiikka, syote),
-            Komento.NOLLAUS: Nollaus(self._sovelluslogiikka, syote),
-            Komento.KUMOA: Kumoa(self._sovelluslogiikka, syote)
+            Komento.NOLLAUS: Nollaus(self._sovelluslogiikka),
+            Komento.KUMOA: Kumoa(self._sovelluslogiikka)
         }
         komento_olio = self._komennot[komento]
         komento_olio.suorita()
