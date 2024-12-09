@@ -8,18 +8,7 @@ def sort_by_points(player):
 
 class Statistics:
     def __init__(self, player_reader):
-        #self._players = player_reader.get_players()
-        self._players = [
-            Player("Leon Draisaitl", "EDM", 41, 65),
-            Player("Connor McDavid", "EDM", 32, 100),
-            Player("Garnet Hathaway", "PHI", 7, 10),
-            Player("Zach Hyman", "EDM", 54, 23),
-            Player("Noah Cates", "PHI", 6, 12),
-            Player("Nick Seeler", "PHI", 1, 12),
-            Player("Egor Zamula", "PHI", 5, 16),
-            Player("Evan Bouchard", "EDM", 18, 64),
-            Player("Ryan Nugent-Hopkins", "EDM", 18, 49),
-            ]
+        self._players = player_reader.get_players()
 
     def search(self, name):
         for player in self._players:
